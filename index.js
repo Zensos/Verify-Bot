@@ -51,7 +51,7 @@ const client = new Client({
     })
 
     client.on('guildMemberAdd' , (member) => {
-        if(member.user.bot && client.toggle) return member.ban();
+        if(member.user.bot && client.room) return member.ban();
     })
 
     client.on('messageCreate' , async (message) => {

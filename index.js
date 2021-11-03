@@ -50,6 +50,10 @@ const client = new Client({
         await guild.commands.delete();
     })
 
+    client.on('guildMemberAdd' , (member) => {
+        if(member.user.bot && client.toggle) return member.ban();
+    })
+
     client.on('messageCreate' , async (message) => {
         let data = await db.get(message.guild.id);
         if(!message.author.bot && message.channel.id != data.raw_channel && !client.room) return;

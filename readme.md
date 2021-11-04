@@ -11,11 +11,10 @@
 npm i
 
 สร้างไฟล์ .env
-```js
 TOKEN=
 MAIN_COLOR=GREEN
 FAIL_COLOR=RED
 VERIFY_MESSAGES=verify
-ROLE_ID=```
+ROLE_ID=
 
 ```

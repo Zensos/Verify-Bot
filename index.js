@@ -51,11 +51,12 @@ const client = new Client({
     })
 
     client.on('guildMemberAdd' , (member) => {
-        if(member.user.bot && client.room) return member.ban();
+        if(member.user.bot && client.toggle) return member.ban();
     })
 
     client.on('messageCreate' , async (message) => {
         let data = await db.get(message.guild.id);
+        if(!data) return;
         if(!message.author.bot && message.channel.id != data.raw_channel && !client.room) return;
         message.delete()
         if(message.content == process.env.VERIFY_MESSAGES && !message.member.roles.cache.find(r => r.id === process.env.ROLE_ID)) {
